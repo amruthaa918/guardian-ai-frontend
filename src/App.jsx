@@ -3,7 +3,7 @@ import { Routes, Route, Link, useNavigate, useLocation, Navigate } from 'react-r
 import axios from 'axios';
 import { AlertCircle, Shield, Users, MapPin, LayoutDashboard, LogOut, Navigation, CheckCircle, XCircle, Clock } from 'lucide-react';
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = `${import.meta.env.VITE_API_BASE_URL}/api`;
 
 const setAuthToken = token => {
   if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -346,10 +346,10 @@ function SOS() {
                     borderRadius: '8px',
                     border: '1px solid #e2e8f0',
                     borderLeft: `5px solid ${(item.emailStatus === 'ACCEPTED' || item.emailStatus === 'SENT' || item.smsStatus === 'SENT')
-                        ? '#10b981'
-                        : (item.emailStatus === 'FAILED' || item.smsStatus === 'FAILED')
-                          ? '#ef4444'
-                          : '#f59e0b'
+                      ? '#10b981'
+                      : (item.emailStatus === 'FAILED' || item.smsStatus === 'FAILED')
+                        ? '#ef4444'
+                        : '#f59e0b'
                       }`,
                     backgroundColor: '#ffffff'
                   }}
